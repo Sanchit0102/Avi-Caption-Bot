@@ -15,7 +15,7 @@ caption_position = usercaption_position.lower()
 caption_text = Config.CAPTION_TEXT
 
 
-@autocaption.on_message(filters.channel & (filters.document | filters.video | filters.audio ) & ~filters.edited, group=-1)
+@autocaption.on_message(filters.channel & (filters.document | filters.video | filters.audio ) & ~~filters.forwarded, group=-1)
 async def editing(bot, message):
       try:
          media = message.document or message.video or message.audio
@@ -34,21 +34,21 @@ async def editing(bot, message):
       try:
           if caption_position == "top":
              await bot.edit_message_caption(
-                 chat_id = message.chat.id, 
+                 reply_to_message_id = cmd.message.message_id, 
                  message_id = message.message_id,
                  caption = caption_text + "\n" + file_caption,
                  parse_mode = "markdown"
              )
           elif caption_position == "bottom":
              await bot.edit_message_caption(
-                 chat_id = message.chat.id, 
+                 reply_to_message_id = cmd.message.message_id, 
                  message_id = message.message_id,
                  caption = file_caption + "\n" + caption_text,
                  parse_mode = "markdown"
              )
           elif caption_position == "nil":
              await bot.edit_message_caption(
-                 chat_id = message.chat.id,
+                 reply_to_message_id = cmd.message.message_id,
                  message_id = message.message_id,
                  caption = caption_text, 
                  parse_mode = "markdown"
