@@ -43,4 +43,4 @@ class autocaption(Client):
         else:
             print("Time Synchronization Successful")
 if __name__ == "__main__" :
-    autocaption().run()
+run()
