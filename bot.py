@@ -16,7 +16,7 @@ class AutoCaptionBot(Client):
     def __init__(self):
         super().__init__(
             name="Captioner",
-            bot_token="6650529779:AAGYioPMLCR1ZPTq93DTSP_iTGDC7mATgpU",
+            bot_token="6362281925:AAH2apUzPpJrf89TNeyNDWGnTrvzL4W5uf8",
             api_id="16536417",
             api_hash="f6e58a549da642d7b765744a2f82c6d9",
             workers=20,
